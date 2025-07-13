@@ -2,145 +2,141 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TIKTOK MONEY</title>
   <style>
-    body { margin: 0; min-height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(to bottom, #f0f4ff, #e6eeff); font-family: Arial, sans-serif; }
-    .step { display: none; background: white; border-radius: 20px; padding: 40px 30px; max-width: 500px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; position: relative; }
+    body { margin: 0; font-family: Arial, sans-serif; background: linear-gradient(to bottom, #f0f4ff, #e6eeff); display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .step { display: none; background: white; border-radius: 20px; padding: 30px; max-width: 500px; width: 90%; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; position: relative; }
     .active { display: block; }
+    .tik-logo { width: 60px; margin-bottom: 5px; }
+    .app-icon { font-weight: bold; font-size: 20px; color: #333; margin-bottom: 15px; }
+    .app-icon span { font-size: 24px; margin-right: 8px; color: #00FF23; }
     .header { position: absolute; top: 15px; left: 20px; display: flex; align-items: center; }
     .back-arrow { font-size: 20px; cursor: pointer; margin-right: 8px; color: black; }
     .back-text { font-size: 14px; font-weight: bold; text-transform: uppercase; color: black; cursor: pointer; }
-    .app-icon { display: flex; align-items: center; justify-content: center; margin-top: 20px; font-weight: bold; font-size: 20px; color: #333; }
-    .app-icon span { font-size: 24px; margin-right: 8px; color: #00FF23; }
     input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
     .btn { width: 100%; background-color: #00FF23; color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; text-transform: uppercase; cursor: pointer; margin-top: 20px; font-size: 16px; }
-    .btn:hover { opacity: 0.9; }
     .tutorial-card, .link-card { background: #1f1f2e; color: white; padding: 20px; border-radius: 15px; text-align: left; margin: 20px 0; font-size: 14px; }
     .tutorial-card strong, .link-card strong { color: #FFD700; }
     .tutorial-card ul, .link-card ul { padding-left: 20px; margin: 10px 0; }
     .tutorial-card li, .link-card li { margin-bottom: 20px; list-style: none; }
     .tutorial-card li::before, .link-card li::before { content: "✔️ "; color: #00FF23; }
     .option-container { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 20px; }
-    .option-button { display: flex; flex-direction: column; align-items: center; background: #f5f5f5; border-radius: 12px; padding: 15px; margin: 10px; cursor: pointer; transition: background-color 0.3s ease; width: 150px; text-transform: uppercase; font-weight: bold; font-size: 14px; color: #333; }
-    .option-button:hover { background-color: #e0e0e0; }
+    .option-button { display: flex; flex-direction: column; align-items: center; background: #f5f5f5; border-radius: 12px; padding: 15px; margin: 10px; cursor: pointer; width: 150px; text-transform: uppercase; font-weight: bold; font-size: 14px; color: #333; }
     .option-button img { width: 50px; height: 50px; margin-bottom: 8px; object-fit: contain; }
-    .tik-logo { width: 60px; margin-bottom: 5px; }
-    #exit-popup { position: fixed; bottom: 20px; right: 20px; background: #f5f5f5; padding: 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); cursor: pointer; z-index: 1000; display: none; align-items: center; }
-    #exit-popup img { width: 24px; height: 24px; margin-right: 6px; }
-    #exit-popup div { font-size: 12px; color: #333; }
-    @media (max-width: 500px) { .header { top: 10px; left: 10px; } }
   </style>
 </head>
 <body>
 
-  <!-- Etapa 1 -->
-  <div id="step1" class="step active">
-    <img class="tik-logo" src="https://pngimg.com/uploads/tiktok/tiktok_PNG14.png" alt="TikTok Logo">
-    <div class="app-icon"><span>💸</span> TIKTOK MONEY</div>
-    <h3>SEJA BEM VINDO AO TIK TOK MONEY</h3>
-    <p>Insira seus dados para começar</p>
-    <input type="text" placeholder="Seu nome" id="nome" required>
-    <input type="tel" placeholder="Ex: 82 99999-9999" id="telefone" required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-    <button class="btn" onclick="nextStep(2)">CONTINUAR</button>
+<!-- Etapa 1 -->
+<div id="step1" class="step active">
+  <img class="tik-logo" src="https://pngimg.com/uploads/tiktok/tiktok_PNG14.png" alt="TikTok Logo">
+  <div class="app-icon"><span>💸</span> TIKTOK MONEY</div>
+  <h3>SEJA BEM VINDO AO TIK TOK MONEY</h3>
+  <p>Insira seus dados para começar</p>
+
+  <div style="text-align: left; font-weight: bold;">Seu nome:</div>
+  <input type="text" placeholder="Ex: João Mussa" id="nome" required>
+
+  <div style="text-align: left; font-weight: bold;">Seu telefone:</div>
+  <input type="tel" placeholder="Ex: 84123456" id="telefone" required oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+
+  <button class="btn" onclick="nextStep(2)">CONTINUAR</button>
+</div>
+
+<!-- Etapa 2 -->
+<div id="step2" class="step">
+  <div class="header" onclick="nextStep(1)">
+    <div class="back-arrow">⬅️</div>
+    <div class="back-text">VOLTAR</div>
+  </div>
+  <div class="app-icon"><span>💸</span> TIKTOK MONEY</div>
+
+  <button class="btn" onclick="window.open('https://drive.google.com/file/d/1WFTHym0QUaxledZ_KXvKBKBkHWYunlYT/view?usp=sharing', '_blank')">CLIQUE AQUI E COMEÇE AGORA</button>
+
+  <div class="tutorial-card">
+    <strong>TUTORIAL RÁPIDO:</strong>
+    <ul>
+      <li>ACESSE OS VÍDEOS E SELECIONE OS MELHORES!</li>
+      <li>SALVE EM SEU CELULAR PARA TER SEMPRE À MÃO!</li>
+      <li>PUBLIQUE 1 VÍDEO POR DIA PARA AUMENTAR SUA AUDIÊNCIA!</li>
+      <li>AFILIE-SE E ADICIONE SEU LINK DE AFILIADO NA DESCRIÇÃO PARA GANHAR!</li>
+    </ul>
   </div>
 
-  <!-- Etapa 2 -->
-  <div id="step2" class="step">
-    <div class="header" onclick="nextStep(1)">
-      <div class="back-arrow">⬅️</div>
-      <div class="back-text">VOLTAR</div>
-    </div>
-    <div class="app-icon">
-      <span>💸</span> TIKTOK MONEY
-    </div>
-    <div class="tutorial-card">
-      <strong>TUTORIAL RÁPIDO:</strong>
-      <ul>
-        <li>ACESSE OS VÍDEOS E SELECIONE OS MELHORES!</li>
-        <li>SALVE EM SEU CELULAR PARA TER SEMPRE À MÃO!</li>
-        <li>PUBLIQUE 1 VÍDEO POR DIA PARA AUMENTAR SUA AUDIÊNCIA!</li>
-        <li>AFILIE-SE E ADICIONE SEU LINK DE AFILIADO NA DESCRIÇÃO PARA GANHAR!</li>
-      </ul>
+  <div class="option-container">
+    <div class="option-button" onclick="nextStep(4)">
+      <img src="https://toppng.com/uploads/preview/tiktok-logo-wihout-background-116616376201hldnesyti.png" alt="TikTok">
+      VIDEOS VIRAIS PRONTOS
     </div>
 
-    <div class="option-container">
-      <div class="option-button" onclick="nextStep(4)">
-        <img src="https://toppng.com/uploads/preview/tiktok-logo-wihout-background-116616376201hldnesyti.png" alt="TikTok">
-        VIDEOS VIRAIS PRONTOS
-      </div>
-
-      <div class="option-button" onclick="nextStep(3)">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopee_logo.svg/1442px-Shopee_logo.svg.png" alt="Shopee">
-        LINKS DOS PRODUTOS
-      </div>
+    <div class="option-button" onclick="nextStep(3)">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopee_logo.svg/1442px-Shopee_logo.svg.png" alt="Shopee">
+      LINKS DOS PRODUTOS
     </div>
   </div>
+</div>
 
-  <!-- Etapa 3 -->
-  <div id="step3" class="step">
-    <div class="header" onclick="nextStep(2)">
-      <div class="back-arrow">⬅️</div>
-      <div class="back-text">VOLTAR</div>
-    </div>
-    <div class="app-icon"><span>🛒</span> LINKS DOS PRODUTOS</div>
-    <div class="link-card">
-      <strong>PRODUTOS PARA AFILIAÇÃO 💚</strong>
-      <ul id="links-list"></ul>
-    </div>
+<!-- Etapa 3 -->
+<div id="step3" class="step">
+  <div class="header" onclick="nextStep(2)">
+    <div class="back-arrow">⬅️</div>
+    <div class="back-text">VOLTAR</div>
   </div>
-
-  <!-- Etapa 4 -->
-  <div id="step4" class="step">
-    <div class="header" onclick="nextStep(2)">
-      <div class="back-arrow">⬅️</div>
-      <div class="back-text">VOLTAR</div>
-    </div>
-    <div class="app-icon"><span>🎥</span> VIDEOS VIRAIS</div>
-    <div class="link-card">
-      <strong>LISTA DE VÍDEOS 📹</strong>
-      <ul id="videos-list"></ul>
-    </div>
+  <div class="app-icon"><span>🛒</span> LINKS DOS PRODUTOS</div>
+  <div class="link-card">
+    <strong>PRODUTOS PARA AFILIAÇÃO 💚</strong>
+    <ul id="links-list"></ul>
   </div>
+</div>
 
-  <!-- Exit popup apenas na etapa 2 -->
-  <div id="exit-popup" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdckz4H8Q88DDA80echuAOxKR_Ec2Sa-HlUTIMrxfe6yhH5zQ/viewform?usp=sharing&ouid=108791490798163036389', '_blank')">
-    <img src="https://w7.pngwing.com/pngs/702/888/png-transparent-customer-service-technical-support-computer-icons-cabin-miscellaneous-service-photography.png" alt="Suporte">
-    <div>SUPORTE/PERGUNTAS/REEMBOLSO</div>
+<!-- Etapa 4 -->
+<div id="step4" class="step">
+  <div class="header" onclick="nextStep(2)">
+    <div class="back-arrow">⬅️</div>
+    <div class="back-text">VOLTAR</div>
   </div>
+  <div class="app-icon"><span>🎥</span> VIDEOS VIRAIS</div>
+  <div class="link-card">
+    <strong>LISTA DE VÍDEOS 📹</strong>
+    <ul id="videos-list"></ul>
+  </div>
+</div>
 
-  <script>
-    function nextStep(stepNumber) {
-      document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
-      document.getElementById(`step${stepNumber}`).classList.add('active');
-      document.getElementById('exit-popup').style.display = (stepNumber === 2) ? 'flex' : 'none';
-    }
+<script>
+  function nextStep(stepNumber) {
+    document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+    document.getElementById(`step${stepNumber}`).classList.add('active');
+  }
 
-    const productLinks = [
-      "https://s.shopee.com.br/4pufZKIQ8W", "https://s.shopee.com.br/6fMJkn4TqM", "https://s.shopee.com.br/3VPHz2Ev5P", "https://s.shopee.com.br/pPof4hML",
-      "https://s.shopee.com.br/3q28Nsq88S", "https://s.shopee.com.br/3L5rnMqjb7", "https://s.shopee.com.br/5pnCldbxY0", "https://s.shopee.com.br/6fMJlbssuW",
-      "https://s.shopee.com.br/6zzAALfW3D", "https://s.shopee.com.br/10hx1NEHAm", "https://s.shopee.com.br/A9w7UFaUmO", "https://s.shopee.com.br/2LDKbxfItd",
-      "https://s.shopee.com.br/B8q20zsHw", "https://s.shopee.com.br/6KjTNdMBsl", "https://s.shopee.com.br/3AmRei5X4l", "https://s.shopee.com.br/4pufduDlFq",
-      "https://s.shopee.com.br/qOWsemME8", "https://s.shopee.com.br/qOWsemME8", "https://s.shopee.com.br/1qH44lFp36", "https://s.shopee.com.br/1fxdsWWRL7",
-      "https://s.shopee.com.br/9KN50fNyIY", "https://s.shopee.com.br/1B1NHjZNFp", "https://s.shopee.com.br/2LDKg2vlBJ", "https://s.shopee.com.br/LSGISRoyU",
-      "https://s.shopee.com.br/2AtuTuEHib", "https://s.shopee.com.br/20aUHlssR3", "https://s.shopee.com.br/9ezvPutU0e", "https://s.shopee.com.br/6zzAF6o0o3",
-      "https://s.shopee.com.br/1VeDh5SrOa", "https://s.shopee.com.br/30T1Tw7ST7"
-    ];
+  // Produtos
+  const productLinks = [
+    "https://s.shopee.com.br/4pufZKIQ8W", "https://s.shopee.com.br/6fMJkn4TqM", "https://s.shopee.com.br/3VPHz2Ev5P", "https://s.shopee.com.br/pPof4hML",
+    "https://s.shopee.com.br/3q28Nsq88S", "https://s.shopee.com.br/3L5rnMqjb7", "https://s.shopee.com.br/5pnCldbxY0", "https://s.shopee.com.br/6fMJlbssuW",
+    "https://s.shopee.com.br/6zzAALfW3D", "https://s.shopee.com.br/10hx1NEHAm", "https://s.shopee.com.br/A9w7UFaUmO", "https://s.shopee.com.br/2LDKbxfItd",
+    "https://s.shopee.com.br/B8q20zsHw", "https://s.shopee.com.br/6KjTNdMBsl", "https://s.shopee.com.br/3AmRei5X4l", "https://s.shopee.com.br/4pufduDlFq",
+    "https://s.shopee.com.br/qOWsemME8", "https://s.shopee.com.br/qOWsemME8", "https://s.shopee.com.br/1qH44lFp36", "https://s.shopee.com.br/1fxdsWWRL7",
+    "https://s.shopee.com.br/9KN50fNyIY", "https://s.shopee.com.br/1B1NHjZNFp", "https://s.shopee.com.br/2LDKg2vlBJ", "https://s.shopee.com.br/LSGISRoyU",
+    "https://s.shopee.com.br/2AtuTuEHib", "https://s.shopee.com.br/20aUHlssR3", "https://s.shopee.com.br/9ezvPutU0e", "https://s.shopee.com.br/6zzAF6o0o3",
+    "https://s.shopee.com.br/1VeDh5SrOa", "https://s.shopee.com.br/30T1Tw7ST7"
+  ];
 
-    const linksList = document.getElementById("links-list");
-    productLinks.forEach((link, index) => {
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="${link}" target="_blank" style="color:#00FF23; text-decoration:none; font-weight:bold;">PRODUTO ${String(index + 1).padStart(2, '0')}</a>`;
-      linksList.appendChild(li);
-    });
+  const linksList = document.getElementById("links-list");
+  productLinks.forEach((link, index) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="${link}" target="_blank" style="color:#00FF23; text-decoration:none; font-weight:bold;">PRODUTO ${String(index + 1).padStart(2, '0')}</a>`;
+    linksList.appendChild(li);
+  });
 
-    const videoLink = "https://drive.google.com/drive/folders/1MDBReq98X_oaBn1o7wOtfRo1cApHNagS?usp=sharing";
-    const videosList = document.getElementById("videos-list");
-    for (let i = 1; i <= 30; i++) {
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="${videoLink}" target="_blank" style="color:#00FF23; text-decoration:none; font-weight:bold;">VÍDEO ${String(i).padStart(2, '0')}</a>`;
-      videosList.appendChild(li);
-    }
-  </script>
+  // Vídeos
+  const videoLink = "https://drive.google.com/drive/folders/1MDBReq98X_oaBn1o7wOtfRo1cApHNagS?usp=sharing";
+  const videosList = document.getElementById("videos-list");
+  for (let i = 1; i <= 30; i++) {
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="${videoLink}" target="_blank" style="color:#00FF23; text-decoration:none; font-weight:bold;">VÍDEO ${String(i).padStart(2, '0')}</a>`;
+    videosList.appendChild(li);
+  }
+</script>
 
 </body>
 </html>
